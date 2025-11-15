@@ -1,26 +1,67 @@
+import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
 from kstar_means.core import KStarMeans
 from kstar_means.metrics import ARI, NMI, silhouette
 
+def run():
+    # -----------------------
+    # Generowanie danych syntetycznych
+    # -----------------------
+    n_samples = 300
+    true_k = 3
+    X, true_labels = make_blobs(n_samples=n_samples, centers=true_k, cluster_std=1.0, random_state=42)
 
-def run_synthetic():
-    X, y_true = make_blobs(n_samples=300, centers=4, cluster_std=0.60, random_state=42)
+    print("Synthetic data - true k:", true_k)
 
-    model = KStarMeans(k_min=2, k_max=10, max_iter=50, random_state=42)
-    labels = model.fit_predict(X)
+    # -----------------------
+    # K*-Means
+    # -----------------------
+    kstar_model = KStarMeans(max_iter=50)
+    kstar_labels = kstar_model.fit_predict(X)
 
-    print("True k:", len(set(y_true)))
-    print("Estimated k*:", len(set(labels)))
-    print("ARI:", ARI(y_true, labels))
-    print("NMI:", NMI(y_true, labels))
-    print("Silhouette:", silhouette(X, labels))
+    print("\n--- K*-Means ---")
+    print("Estimated k*:", len(np.unique(kstar_labels)))
+    print("ARI:", ARI(true_labels, kstar_labels))
+    print("NMI:", NMI(true_labels, kstar_labels))
+    if len(np.unique(kstar_labels)) > 1:
+        print("Silhouette:", silhouette(X, kstar_labels))
+    else:
+        print("Silhouette: Cannot compute (only 1 cluster)")
 
-    plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis', s=50)
-    plt.scatter(model.centroids[:, 0], model.centroids[:, 1], c='red', marker='X', s=200)
-    plt.title("Synthetic dataset - K*Means clustering")
+    # -----------------------
+    # Klasyczny K-Means
+    # -----------------------
+    kmeans_model = KMeans(n_clusters=true_k, random_state=42)
+    kmeans_labels = kmeans_model.fit_predict(X)
+
+    print("\n--- Classical K-Means ---")
+    print("Estimated k:", true_k)
+    print("ARI:", ARI(true_labels, kmeans_labels))
+    print("NMI:", NMI(true_labels, kmeans_labels))
+    print("Silhouette:", silhouette(X, kmeans_labels))
+
+    # -----------------------
+    # Wizualizacja wyników
+    # -----------------------
+    plt.figure(figsize=(12, 5))
+
+    plt.subplot(1, 2, 1)
+    plt.scatter(X[:, 0], X[:, 1], c=kstar_labels, cmap='tab10', s=50)
+    plt.title("K*-Means")
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
+
+    plt.subplot(1, 2, 2)
+    plt.scatter(X[:, 0], X[:, 1], c=kmeans_labels, cmap='tab10', s=50)
+    plt.title("Classical K-Means")
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
+
+    plt.tight_layout()
     plt.show()
 
 
 if __name__ == "__main__":
-    run_synthetic()
+    run()
