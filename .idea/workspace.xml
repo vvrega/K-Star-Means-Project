@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="447ca7d4-d0f9-4736-9001-63324a79b24d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/experiments/compare_baselines.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/experiments/plot_results.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/experiments/realdata_experiment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/experiments/synthetic_experiment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kstar_means/core.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kstar_means/mdl.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kstar_means/metrics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kstar_means/split_merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DESC.md" beforeDir="false" afterPath="$PROJECT_DIR$/DESC.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EXAMPLE.md" beforeDir="false" afterPath="$PROJECT_DIR$/EXAMPLE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/run_experiments.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kmeans_algorithm/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/kstar_means/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kmeans_algorithm/kstar_means.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kmeans_algorithm/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/kstar_means/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

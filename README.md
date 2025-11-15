@@ -4,9 +4,15 @@
 pip install -r requirements.txt
 
 ## Uruchomienie eksperymentów
-python experiments/run_experiments.py
+1. Dane rzeczywiste: Iris
+```
+python experiments/realdata_experiment.py
+```
+2. Dane syntetyczne: 2D Blobs
+```
+python experiments/synthetic_experiment.py
+```
 
 ## Struktura projektu
-- kmeans_algorithm/ - implementacja algorytmu
+- kstar_means/ - implementacja algorytmu
 - experiments/ - skrypty testowe
-- data/ - dane do przykładów
