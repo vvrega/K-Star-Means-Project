@@ -17,8 +17,11 @@ def run():
     # -----------------------
     # K*-Means
     # -----------------------
-    model = KStarMeans(max_iter=50)
-    labels = model.fit_predict(X)
+    kstar_model = KStarMeans()
+    mu, C = kstar_model.fit(X)
+
+    # Predykcja dla nowych danych
+    labels = kstar_model.predict(X, mu)
 
     print("\n--- K*-Means ---")
     estimated_k_star = len(np.unique(labels))
