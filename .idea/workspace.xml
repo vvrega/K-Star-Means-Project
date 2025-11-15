@@ -7,7 +7,6 @@
     <list default="true" id="447ca7d4-d0f9-4736-9001-63324a79b24d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiments/realdata_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/realdata_experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/synthetic_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/synthetic_experiment.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +58,7 @@
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.synthetic_experiment">
+  <component name="RunManager" selected="Python.realdata_experiment">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="K-star-Means-Project" />
       <option name="ENV_FILES" value="" />
@@ -230,8 +229,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.synthetic_experiment" />
         <item itemvalue="Python.realdata_experiment" />
+        <item itemvalue="Python.synthetic_experiment" />
         <item itemvalue="Python.run_experiments" />
       </list>
     </recent_temporary>
