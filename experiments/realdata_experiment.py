@@ -28,10 +28,6 @@ def run():
     print("Estimated k*:", estimated_k_star)
     print("ARI:", ARI(true_labels, labels))
     print("NMI:", NMI(true_labels, labels))
-    if estimated_k_star > 1:
-        print("Silhouette:", silhouette(X, labels))
-    else:
-        print("Silhouette: Cannot compute (only 1 cluster)")
 
     # -----------------------
     # Klasyczny K-Means
@@ -43,7 +39,6 @@ def run():
     print("Estimated k:", true_k)
     print("ARI:", ARI(true_labels, kmeans_labels))
     print("NMI:", NMI(true_labels, kmeans_labels))
-    print("Silhouette:", silhouette(X, kmeans_labels))
 
     # Rysowanie wykresów
     plt.figure(figsize=(12, 5))  # większe okno, obok siebie

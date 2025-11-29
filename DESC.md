@@ -22,20 +22,16 @@ K*-Means łączy prostotę K-Means z automatycznym wyborem liczby klastrów, ofe
 
 ## 3. Nowe podejście (K*-Means)
 
-1. Inicjalizacja centroidów losowo (minimum `k_min`).
+1. Inicjalizacja centroidów losowo .
 2. Przypisanie punktów do najbliższego centroidu.
 3. Dla każdego centroidu:
    - Obliczenie wariancji punktów w klastrze.
-   - Jeśli wariancja jest wysoka i nie przekroczono `k_max`, klaster jest dzielony (split).
+   - Jeśli wariancja jest wysoka, klaster jest dzielony (split).
    - Jeśli wariancja jest niska i są podobne klastry, mogą zostać scalone (merge).
-4. Iteracja do momentu zbieżności centroidów lub osiągnięcia `max_iter`.
+4. Iteracja do momentu zbieżności centroidów lub osiągnięcia `patience`.
 
 Parametry algorytmu:
-- `k_min` – minimalna liczba klastrów.
-- `k_max` – maksymalna liczba klastrów (opcjonalnie).
-- `max_iter` – maksymalna liczba iteracji.
-- `tol` – tolerancja dla zbieżności centroidów.
-- `random_state` – ustawienie ziarna generatora losowego.
+- `patience` – maksymalna liczba iteracji.
 
 ---
 

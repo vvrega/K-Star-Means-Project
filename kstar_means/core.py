@@ -4,16 +4,10 @@ from scipy.spatial.distance import cdist
 
 class KStarMeans:
     def __init__(self, patience: int = 100):
-        """
-        K*-means clustering algorithm implementation.
-
-        Args:
-            patience: Number of iterations without improvement before stopping
-        """
         self.patience = patience
 
     def init_subcentroids(self, cluster: np.ndarray) -> List[np.ndarray]:
-        """Initialize two sub-centroids for a cluster using k-means with k=2."""
+
         if len(cluster) < 2:
             return [cluster.mean(axis=0), cluster.mean(axis=0)]
 
@@ -40,7 +34,7 @@ class KStarMeans:
     def kmeans_step(self, X: np.ndarray, mu: List[np.ndarray],
                     C: List[np.ndarray], mu_s: List[List[np.ndarray]],
                     C_s: List[List[np.ndarray]]) -> Tuple:
-        """Perform one k-means iteration: assign points and update centroids."""
+
         k = len(mu)
 
         # Assign each point to nearest centroid
@@ -84,7 +78,7 @@ class KStarMeans:
 
     def mdl_cost(self, X: np.ndarray, mu: List[np.ndarray],
                  C: List[np.ndarray]) -> float:
-        """Calculate MDL (Minimum Description Length) cost."""
+
         n, d = X.shape
         k = len(mu)
 
@@ -120,7 +114,7 @@ class KStarMeans:
     def maybe_split(self, X: np.ndarray, mu: List[np.ndarray],
                     C: List[np.ndarray], mu_s: List[List[np.ndarray]],
                     C_s: List[List[np.ndarray]]) -> Tuple:
-        """Try to split clusters to improve cost."""
+
         best_cost_change = self.mdl_cost(X, mu, C)
         split_at = -1
         n = len(X)
@@ -175,7 +169,7 @@ class KStarMeans:
     def maybe_merge(self, X: np.ndarray, mu: List[np.ndarray],
                     C: List[np.ndarray], mu_s: List[List[np.ndarray]],
                     C_s: List[List[np.ndarray]]) -> Tuple:
-        """Try to merge closest clusters if it improves cost."""
+
         k = len(mu)
         n = len(X)
 
@@ -216,16 +210,6 @@ class KStarMeans:
         return mu, C, mu_s, C_s
 
     def fit(self, X: np.ndarray) -> Tuple[List[np.ndarray], List[np.ndarray]]:
-        """
-        Fit K*-means to data.
-
-        Args:
-            X: Data array of shape (n_samples, n_features)
-
-        Returns:
-            mu: List of cluster centroids
-            C: List of clusters (arrays of points)
-        """
         best_cost = np.inf
         unimproved_count = 0
 
@@ -274,16 +258,6 @@ class KStarMeans:
         return best_mu, best_C
 
     def predict(self, X: np.ndarray, mu: List[np.ndarray]) -> np.ndarray:
-        """
-        Predict cluster labels for data points.
-
-        Args:
-            X: Data array of shape (n_samples, n_features)
-            mu: List of cluster centroids
-
-        Returns:
-            labels: Array of cluster labels
-        """
         centroids_array = np.array(mu)
         distances = cdist(X, centroids_array)
         return np.argmin(distances, axis=1)

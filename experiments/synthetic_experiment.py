@@ -24,27 +24,21 @@ def run():
     # Predykcja dla nowych danych
     kstar_labels = kstar_model.predict(X, mu)
 
-
     print("\n--- K*-Means ---")
     print("Estimated k*:", len(np.unique(kstar_labels)))
     print("ARI:", ARI(true_labels, kstar_labels))
     print("NMI:", NMI(true_labels, kstar_labels))
-    if len(np.unique(kstar_labels)) > 1:
-        print("Silhouette:", silhouette(X, kstar_labels))
-    else:
-        print("Silhouette: Cannot compute (only 1 cluster)")
 
     # -----------------------
     # Klasyczny K-Means
     # -----------------------
-    kmeans_model = KMeans(n_clusters=10, random_state=42)
+    kmeans_model = KMeans(n_clusters=true_k, random_state=42)
     kmeans_labels = kmeans_model.fit_predict(X)
 
     print("\n--- Classical K-Means ---")
     print("Estimated k:", true_k)
     print("ARI:", ARI(true_labels, kmeans_labels))
     print("NMI:", NMI(true_labels, kmeans_labels))
-    print("Silhouette:", silhouette(X, kmeans_labels))
 
     # -----------------------
     # Wizualizacja wyników
@@ -54,14 +48,10 @@ def run():
     plt.subplot(1, 2, 1)
     plt.scatter(X[:, 0], X[:, 1], c=kstar_labels, cmap='tab10', s=50)
     plt.title("K*-Means")
-    plt.xlabel("Feature 1")
-    plt.ylabel("Feature 2")
 
     plt.subplot(1, 2, 2)
     plt.scatter(X[:, 0], X[:, 1], c=kmeans_labels, cmap='tab10', s=50)
     plt.title("Classical K-Means")
-    plt.xlabel("Feature 1")
-    plt.ylabel("Feature 2")
 
     plt.tight_layout()
     plt.show()
